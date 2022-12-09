@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import Sidebar from "./Sidebar";
 
-const Dashboard = () => {
+const Dashboard = ({ id }) => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div className="d-flex" style={{
+        height: '100vh'
+    }}>
+      <Sidebar id={id} />
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
