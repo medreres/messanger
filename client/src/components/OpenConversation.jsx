@@ -10,13 +10,14 @@ const OpenConversation = () => {
   }, []);
   const { sendMessage, selectedConversation } = useConversations();
   function handleSubmit(e) {
-    e.preventDefault();
-
-    sendMessage(
-      selectedConversation.recipients.map((recipient) => recipient.id),
-      text
-    );
-    setText("");
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      e.preventDefault();
+      sendMessage(
+        selectedConversation.recipients.map((recipient) => recipient.id),
+        text
+      );
+      setText("");
+    }
   }
 
   return (
@@ -34,7 +35,7 @@ const OpenConversation = () => {
                   message.fromMe ? "align-self-end" : ""
                 }`}
                 style={{
-                    maxWidth: '300px'
+                  maxWidth: "300px",
                 }}
               >
                 <div
@@ -61,6 +62,7 @@ const OpenConversation = () => {
           <InputGroup>
             <Form.Control
               as="textarea"
+              onKeyDown={handleSubmit}
               required
               value={text}
               onChange={(e) => setText(e.target.value)}
