@@ -1,7 +1,10 @@
 import React from "react";
+import { useConversations } from "../contexts/ConversationsProviders";
+import OpenConversation from "./OpenConversation";
 import Sidebar from "./Sidebar";
 
 const Dashboard = ({ id }) => {
+  const { selectedConversation } = useConversations();
   return (
     <div
       className="d-flex"
@@ -10,6 +13,7 @@ const Dashboard = ({ id }) => {
       }}
     >
       <Sidebar id={id} />
+      {selectedConversation && <OpenConversation />}
     </div>
   );
 };
