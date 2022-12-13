@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Started running server on port ${port}`);
 });
-const io = require('socket.io')(5001, {
+const io = require('socket.io')(port, {
     cors: {
         origin: "192.168.31.11:3000/",
         methods: ["GET", "POST"],
