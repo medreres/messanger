@@ -11,7 +11,7 @@ const SocketProvider = ({ children, id }) => {
   const [socket, setSocket] = useState();
 
   useEffect(() => {
-    const newSocket = io("192.168.31.11:5001", {
+    const newSocket = io("https://messanger-react.herokuapp.com/", {
       withCredentials: true,
       query: {
         id,
