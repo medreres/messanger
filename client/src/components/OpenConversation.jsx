@@ -9,8 +9,8 @@ const OpenConversation = () => {
     if (node) node.scrollIntoView({ smooth: true });
   }, []);
   const { sendMessage, selectedConversation } = useConversations();
-  function handleSubmit(e) {
-    if (e.keyCode == 13 && e.shiftKey == false) {
+  function handleSubmitEnter(e, fromBtn) {
+    if (e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
       sendMessage(
         selectedConversation.recipients.map((recipient) => recipient.id),
@@ -18,6 +18,15 @@ const OpenConversation = () => {
       );
       setText("");
     }
+  }
+
+  function handleSubmitButton(e) {
+    e.preventDefault();
+    sendMessage(
+      selectedConversation.recipients.map((recipient) => recipient.id),
+      text
+    );
+    setText("");
   }
 
   return (
@@ -57,12 +66,12 @@ const OpenConversation = () => {
           })}
         </div>
       </div>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmitButton}>
         <Form.Group className="m-2">
           <InputGroup>
             <Form.Control
               as="textarea"
-              onKeyDown={handleSubmit}
+              onKeyDown={handleSubmitEnter}
               required
               value={text}
               onChange={(e) => setText(e.target.value)}

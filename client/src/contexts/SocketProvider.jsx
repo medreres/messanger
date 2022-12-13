@@ -11,7 +11,7 @@ const SocketProvider = ({ children, id }) => {
   const [socket, setSocket] = useState();
 
   useEffect(() => {
-    const newSocket = io("http://192.168.0.101:5001", {
+    const newSocket = io("192.168.31.11:5001", {
       withCredentials: true,
       query: {
         id,

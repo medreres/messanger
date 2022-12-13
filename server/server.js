@@ -1,6 +1,6 @@
 const io = require('socket.io')(5001, {
     cors: {
-        origin: "192.168.0.101:3000/",
+        origin: "192.168.31.11:3000/",
         methods: ["GET", "POST"],
         allowedHeaders: ["my-custom-header"],
         credentials: true
